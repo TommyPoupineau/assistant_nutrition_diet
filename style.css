@@ -61,6 +61,90 @@ body {
   display: block;
 }
 
+/* WIDGETS DASHBOARD */
+.dashboard-widget {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.widget-header h3 {
+  font-size: 0.95rem;
+}
+
+/* HYDRATATION */
+.water-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.water-glass {
+  flex: 1;
+  height: 40px;
+  background: var(--border-color);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.water-glass.active {
+  background: #0284c7;
+}
+
+/* PROGRESS BAR */
+.progress-bar-bg {
+  width: 100%;
+  height: 12px;
+  background: var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--badge-prot);
+  transition: width 0.3s ease;
+}
+
+/* POMODORO TIMER */
+.timer-display {
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 2px;
+  margin: 0.5rem 0 0.8rem 0;
+  color: var(--accent);
+}
+
+.timer-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.status-work { background: rgba(16, 185, 129, 0.2); color: var(--accent); }
+.status-break { background: rgba(245, 158, 11, 0.2); color: var(--badge-omega); }
+
 /* TIMELINE */
 .timeline-container {
   display: flex;
@@ -79,6 +163,11 @@ body {
   align-items: center;
 }
 
+.timeline-item.eaten {
+  border-left-color: var(--badge-prot);
+  opacity: 0.7;
+}
+
 .timeline-time {
   font-weight: bold;
   color: var(--accent);
@@ -86,8 +175,20 @@ body {
   min-width: 50px;
 }
 
+.timeline-content {
+  flex: 1;
+}
+
 .timeline-desc {
   font-size: 0.9rem;
+}
+
+.timeline-action {
+  margin-top: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--badge-prot);
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* RECETTES */
@@ -132,12 +233,27 @@ body {
   gap: 0.8rem;
 }
 
-.recipe-checkbox {
-  width: 20px;
-  height: 20px;
-  accent-color: var(--accent);
+.recipe-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.counter-btn {
+  width: 24px;
+  height: 24px;
+  background: var(--border-color);
+  border: none;
+  color: #fff;
+  border-radius: 4px;
   cursor: pointer;
-  margin-top: 0.2rem;
+  font-weight: bold;
+}
+
+.counter-value {
+  font-size: 0.85rem;
+  font-weight: bold;
 }
 
 .recipe-content {
@@ -257,6 +373,29 @@ body {
   border-bottom: none;
 }
 
+/* BUTTONS */
+.btn-primary {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  width: 100%;
+  background: var(--border-color);
+  color: var(--text-main);
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 /* BOTTOM NAV */
 .bottom-nav {
   position: fixed;
@@ -290,17 +429,6 @@ body {
 
 .nav-icon {
   font-size: 1.2rem;
-}
-
-.btn-primary {
-  width: 100%;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 0.8rem;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 /* MODAL */

@@ -46,34 +46,225 @@ const scheduleData = [
   { id: 'p11', time: "22:30", desc: "Coupure des écrans. Préparation au sommeil.", prot: 0 }
 ];
 
-// DONNÉES DES RECETTES (23 RECETTES)
+// DONNÉES DES RECETTES (23 RECETTES AVEC ALTERNATIVES D'INGRÉDIENTS)
 const recipesData = [
-  { id: 1, category: "pdej", title: "Overnight Oats Super-Graines", prepTime: "5 min", proteins: "28g", protValue: 28, fibers: "12g", omega3: "Très Élevé", ingredients: ["50g flocons d'avoine", "200g fromage blanc 0%", "15g graines de chia", "10g graines de lin moulues", "50g myrtilles"], steps: ["Dans un bocal, verse les flocons d'avoine.", "Ajoute les graines de chia et de lin.", "Incorpore le fromage blanc 0% et mélange.", "Dépose les myrtilles et réserve au frais."] },
-  { id: 2, category: "pdej", title: "Omelette Épinards & Pain au Levain", prepTime: "8 min", proteins: "26g", protValue: 26, fibers: "6g", omega3: "Élevé", ingredients: ["3 unit œufs", "50g épinards frais", "2 tranches pain complet", "10ml huile d'olive"], steps: ["Bats les 3 œufs dans un bol.", "Fais tomber les épinards à la poêle avec l'huile.", "Verse les œufs et laisse cuire 3-4 min.", "Sers sur le pain grillé."] },
-  { id: 3, category: "pdej", title: "Bowl Skyr, Protéine & Noix", prepTime: "3 min", proteins: "32g", protValue: 32, fibers: "5g", omega3: "Très Élevé", ingredients: ["250g skyr", "30g protéine vanille", "20g cerneaux de noix", "1/2 unit banane"], steps: ["Mélange le Skyr et la protéine.", "Ajoute les cerneaux de noix et les rondelles de banane."] },
-  { id: 4, category: "pdej", title: "Pancakes Protéinés Avoine & Chia", prepTime: "10 min", proteins: "30g", protValue: 30, fibers: "8g", omega3: "Moyen", ingredients: ["60g flocons d'avoine", "2 unit œufs", "100g fromage blanc 0%", "10g graines de chia"], steps: ["Mélange l'avoine, les œufs, le fromage blanc et la chia.", "Fais cuire de petits pancakes dans une poêle 2 min par côté."] },
-  { id: 16, category: "pdej", title: "Toast Avocat & Saumon Fumé", prepTime: "8 min", proteins: "27g", protValue: 27, fibers: "7g", omega3: "Excellence EPA/DHA", ingredients: ["2 tranches pain complet", "1/2 unit avocat", "1 unit œuf", "50g saumon fumé"], steps: ["Écrase l'avocat sur le pain grillé.", "Ajoute le saumon et l'œuf poché."] },
-  { id: 17, category: "pdej", title: "Smoothie Bowl Framboise & Lin", prepTime: "5 min", proteins: "29g", protValue: 29, fibers: "10g", omega3: "Très Élevé", ingredients: ["200g fromage blanc 0%", "100g framboises", "30g protéine vanille", "15g graines de lin moulues"], steps: ["Mixe le fromage blanc, framboises et protéine.", "Parsème de graines de lin."] },
+  { 
+    id: 1, category: "pdej", title: "Overnight Oats Super-Graines", prepTime: "5 min", proteins: "28g", protValue: 28, fibers: "12g", omega3: "Très Élevé", 
+    ingredients: [
+      { raw: "50g flocons d'avoine", alt: "Flocons de sarrasin ou d'épeautre" },
+      { raw: "200g fromage blanc 0%", alt: "Yaourt au soja ou yaourt de coco sans sucre" },
+      { raw: "15g graines de chia", alt: "Graines de basilic" },
+      { raw: "10g graines de lin moulues", alt: "Graines de chanvre" },
+      { raw: "50g myrtilles", alt: "Framboises ou mûres" }
+    ], 
+    steps: ["Dans un bocal, verse les flocons d'avoine.", "Ajoute les graines de chia et de lin.", "Incorpore le fromage blanc 0% et mélange.", "Dépose les myrtilles et réserve au frais."] 
+  },
+  { 
+    id: 2, category: "pdej", title: "Omelette Épinards & Pain au Levain", prepTime: "8 min", proteins: "26g", protValue: 26, fibers: "6g", omega3: "Élevé", 
+    ingredients: [
+      { raw: "3 unit œufs", alt: "150g tofu soyeux (option végétalienne)" },
+      { raw: "50g épinards frais", alt: "Pousses de kale ou d'roquette" },
+      { raw: "2 tranches pain complet", alt: "Pain de seigle ou pain sans gluten" },
+      { raw: "10ml huile d'olive", alt: "Huile d'avocat" }
+    ], 
+    steps: ["Bats les 3 œufs dans un bol.", "Fais tomber les épinards à la poêle avec l'huile.", "Verse les œufs et laisse cuire 3-4 min.", "Sers sur le pain grillé."] 
+  },
+  { 
+    id: 3, category: "pdej", title: "Bowl Skyr, Protéine & Noix", prepTime: "3 min", proteins: "32g", protValue: 32, fibers: "5g", omega3: "Très Élevé", 
+    ingredients: [
+      { raw: "250g skyr", alt: "Specialité végétale au soja enrichie" },
+      { raw: "30g protéine vanille", alt: "Protéine végétale (pois/riz)" },
+      { raw: "20g cerneaux de noix", alt: "Noix de Grenoble ou graines de courge" },
+      { raw: "1/2 unit banane", alt: "1/2 pomme en dés" }
+    ], 
+    steps: ["Mélange le Skyr et la protéine.", "Ajoute les cerneaux de noix et les rondelles de banane."] 
+  },
+  { 
+    id: 4, category: "pdej", title: "Pancakes Protéinés Avoine & Chia", prepTime: "10 min", proteins: "30g", protValue: 30, fibers: "8g", omega3: "Moyen", 
+    ingredients: [
+      { raw: "60g flocons d'avoine", alt: "Farine d'avoine sans gluten" },
+      { raw: "2 unit œufs", alt: "100g compote de pommes + 1 c.a.s chia" },
+      { raw: "100g fromage blanc 0%", alt: "Skyr ou yaourt végétal" },
+      { raw: "10g graines de chia", alt: "Graines de lin moulues" }
+    ], 
+    steps: ["Mélange l'avoine, les œufs, le fromage blanc et la chia.", "Fais cuire de petits pancakes dans une poêle 2 min par côté."] 
+  },
+  { 
+    id: 16, category: "pdej", title: "Toast Avocat & Saumon Fumé", prepTime: "8 min", proteins: "27g", protValue: 27, fibers: "7g", omega3: "Excellence EPA/DHA", 
+    ingredients: [
+      { raw: "2 tranches pain complet", alt: "Pain au petit épeautre" },
+      { raw: "1/2 unit avocat", alt: "30g purée d'amandes" },
+      { raw: "1 unit œuf", alt: "Tofu poêlé" },
+      { raw: "50g saumon fumé", alt: "Trout fumée ou saumon végétal" }
+    ], 
+    steps: ["Écrase l'avocat sur le pain grillé.", "Ajoute le saumon et l'œuf poché."] 
+  },
+  { 
+    id: 17, category: "pdej", title: "Smoothie Bowl Framboise & Lin", prepTime: "5 min", proteins: "29g", protValue: 29, fibers: "10g", omega3: "Très Élevé", 
+    ingredients: [
+      { raw: "200g fromage blanc 0%", alt: "Yaourt de soja nature" },
+      { raw: "100g framboises", alt: "Mélange de fruits rouges surgelés" },
+      { raw: "30g protéine vanille", alt: "Protéine de chanvre" },
+      { raw: "15g graines de lin moulues", alt: "Graines de chia" }
+    ], 
+    steps: ["Mixe le fromage blanc, framboises et protéine.", "Parsème de graines de lin."] 
+  },
 
-  { id: 5, category: "dejeuner", title: "Salade Thon & Haricots Blancs", prepTime: "5 min", proteins: "38g", protValue: 38, fibers: "11g", omega3: "Très Élevé", ingredients: ["120g thon au naturel", "150g haricots blancs", "100g tomates", "15ml huile de colza"], steps: ["Mélange le thon, les haricots rincés et les tomates.", "Assaisonne avec l'huile de colza."] },
-  { id: 6, category: "dejeuner", title: "Bowl Saumon Fumé & Quinoa", prepTime: "10 min", proteins: "35g", protValue: 35, fibers: "9g", omega3: "Excellence EPA/DHA", ingredients: ["100g saumon fumé", "120g quinoa cuit", "1/2 unit avocat", "100g concombre"], steps: ["Assemble le quinoa, saumon, avocat et concombre."] },
-  { id: 7, category: "dejeuner", title: "Wrap Poulet & Houmous", prepTime: "7 min", proteins: "36g", protValue: 36, fibers: "10g", omega3: "Modéré", ingredients: ["1 unit tortilla intégrale", "130g aiguillettes de poulet", "30g houmous", "50g carottes râpées"], steps: ["Poêle le poulet 5 min.", "Étale le houmous sur la tortilla, ajoute la garniture et roule."] },
-  { id: 8, category: "dejeuner", title: "Pâtes au Maquereau & Courgettes", prepTime: "12 min", proteins: "34g", protValue: 34, fibers: "8g", omega3: "Très Élevé", ingredients: ["60g pâtes complètes", "120g maquereau au naturel", "1 unit courgette", "10ml huile d'olive"], steps: ["Fais cuire les pâtes.", "Fais sauter la courgette.", "Mélange le tout avec le maquereau."] },
-  { id: 18, category: "dejeuner", title: "Salade Lentilles & Sardines", prepTime: "6 min", proteins: "35g", protValue: 35, fibers: "12g", omega3: "Excellence EPA/DHA", ingredients: ["200g lentilles cuites", "100g sardines", "15ml huile de colza"], steps: ["Réchauffe légèrement les lentilles.", "Mélange avec la vinaigrette et les sardines."] },
-  { id: 19, category: "dejeuner", title: "Bowl Crevettes & Riz Noir", prepTime: "12 min", proteins: "33g", protValue: 33, fibers: "6g", omega3: "Élevé", ingredients: ["150g crevettes", "120g riz noir cuit", "1 unit poivron rouge"], steps: ["Fais sauter le poivron et les crevettes.", "Sers sur le riz noir."] },
+  { 
+    id: 5, category: "dejeuner", title: "Salade Thon & Haricots Blancs", prepTime: "5 min", proteins: "38g", protValue: 38, fibers: "11g", omega3: "Très Élevé", 
+    ingredients: [
+      { raw: "120g thon au naturel", alt: "Maquereau ou crevettes" },
+      { raw: "150g haricots blancs", alt: "Pois chiches ou lentilles blondes" },
+      { raw: "100g tomates", alt: "Poivrons cuits" },
+      { raw: "15ml huile de colza", alt: "Huile de noix" }
+    ], 
+    steps: ["Mélange le thon, les haricots rincés et les tomates.", "Assaisonne avec l'huile de colza."] 
+  },
+  { 
+    id: 6, category: "dejeuner", title: "Bowl Saumon Fumé & Quinoa", prepTime: "10 min", proteins: "35g", protValue: 35, fibers: "9g", omega3: "Excellence EPA/DHA", 
+    ingredients: [
+      { raw: "100g saumon fumé", alt: "Truite fumée ou pavé de saumon cuit" },
+      { raw: "120g quinoa cuit", alt: "Riz sauvage ou boulgour" },
+      { raw: "1/2 unit avocat", alt: "15ml huile d'olive + citron" },
+      { raw: "100g concombre", alt: "Courgette crue en tagliatelles" }
+    ], 
+    steps: ["Assemble le quinoa, saumon, avocat et concombre."] 
+  },
+  { 
+    id: 7, category: "dejeuner", title: "Wrap Poulet & Houmous", prepTime: "7 min", proteins: "36g", protValue: 36, fibers: "10g", omega3: "Modéré", 
+    ingredients: [
+      { raw: "1 unit tortilla intégrale", alt: "Feuille de wrap sans gluten" },
+      { raw: "130g aiguillettes de poulet", alt: "Emincé de dinde ou tempeh" },
+      { raw: "30g houmous", alt: "Caviar d'aubergine" },
+      { raw: "50g carottes râpées", alt: "Chou rouge râpé" }
+    ], 
+    steps: ["Poêle le poulet 5 min.", "Étale le houmous sur la tortilla, ajoute la garniture et roule."] 
+  },
+  { 
+    id: 8, category: "dejeuner", title: "Pâtes au Maquereau & Courgettes", prepTime: "12 min", proteins: "34g", protValue: 34, fibers: "8g", omega3: "Très Élevé", 
+    ingredients: [
+      { raw: "60g pâtes complètes", alt: "Pâtes de lentilles corail ou pois chiches" },
+      { raw: "120g maquereau au naturel", alt: "Sardines au naturel" },
+      { raw: "1 unit courgette", alt: "Brocoli ou asperges" },
+      { raw: "10ml huile d'olive", alt: "Huile de lin (à ajouter à froid)" }
+    ], 
+    steps: ["Fais cuire les pâtes.", "Fais sauter la courgette.", "Mélange le tout avec le maquereau."] 
+  },
+  { 
+    id: 18, category: "dejeuner", title: "Salade Lentilles & Sardines", prepTime: "6 min", proteins: "35g", protValue: 35, fibers: "12g", omega3: "Excellence EPA/DHA", 
+    ingredients: [
+      { raw: "200g lentilles cuites", alt: "Quinoa ou flageolets" },
+      { raw: "100g sardines", alt: "Maquereau ou foie de morue" },
+      { raw: "15ml huile de colza", alt: "Huile de chanvre" }
+    ], 
+    steps: ["Réchauffe légèrement les lentilles.", "Mélange avec la vinaigrette et les sardines."] 
+  },
+  { 
+    id: 19, category: "dejeuner", title: "Bowl Crevettes & Riz Noir", prepTime: "12 min", proteins: "33g", protValue: 33, fibers: "6g", omega3: "Élevé", 
+    ingredients: [
+      { raw: "150g crevettes", alt: "Tofu grillé ou dés de cabillaud" },
+      { raw: "120g riz noir cuit", alt: "Riz basmati complet" },
+      { raw: "1 unit poivron rouge", alt: "Courgettes ou carottes" }
+    ], 
+    steps: ["Fais sauter le poivron et les crevettes.", "Sers sur le riz noir."] 
+  },
 
-  { id: 9, category: "diner", title: "Pavé de Saumon, Brocolis & Lentilles", prepTime: "20 min", proteins: "42g", protValue: 42, fibers: "14g", omega3: "Excellence EPA/DHA", ingredients: ["140g pavé de saumon", "150g brocolis", "100g lentilles cuites"], steps: ["Cuis le saumon au four à 180°C pendant 12 min.", "Cuis le brocolis à la vapeur."] },
-  { id: 10, category: "diner", title: "Chili Express Dinde & Haricots Rouges", prepTime: "15 min", proteins: "40g", protValue: 40, fibers: "12g", omega3: "Moyen", ingredients: ["150g haché de dinde 5%", "150g haricots rouges", "200g purée de tomates"], steps: ["Dore la dinde.", "Ajoute les haricots et la purée de tomate, puis laisse mijoter 8 min."] },
-  { id: 11, category: "diner", title: "Sauté de Bœuf aux Poivrons & Riz", prepTime: "15 min", proteins: "38g", protValue: 38, fibers: "7g", omega3: "Faible", ingredients: ["150g pavé de bœuf 5%", "1 unit poivron rouge", "100g riz complet cuit"], steps: ["Émince le bœuf et les légumes.", "Fais sauter au wok à feu vif."] },
-  { id: 12, category: "diner", title: "Cabillaud Graines & Épinards", prepTime: "15 min", proteins: "36g", protValue: 36, fibers: "6g", omega3: "Très Élevé", ingredients: ["160g filet de cabillaud", "15g graines de chia", "250g épinards frais"], steps: ["Presse le cabillaud dans les graines et cuis au four 12 min.", "Fais tomber les épinards."] },
-  { id: 20, category: "diner", title: "Curry de Poulet & Chou-Fleur", prepTime: "18 min", proteins: "35g", protValue: 35, fibers: "9g", omega3: "Moyen", ingredients: ["150g filet de poulet", "200g chou-fleur", "100ml lait de coco léger"], steps: ["Dore le poulet.", "Ajoute le chou-fleur, le curry et le lait de coco."] },
-  { id: 21, category: "diner", title: "Omelette Fluffy aux Crevettes", prepTime: "10 min", proteins: "34g", protValue: 34, fibers: "4g", omega3: "Élevé", ingredients: ["3 unit œufs", "100g crevettes", "1/2 unit courgette"], steps: ["Fais sauter la courgette.", "Ajoute les crevettes puis les œufs battus."] },
+  { 
+    id: 9, category: "diner", title: "Pavé de Saumon, Brocolis & Lentilles", prepTime: "20 min", proteins: "42g", protValue: 42, fibers: "14g", omega3: "Excellence EPA/DHA", 
+    ingredients: [
+      { raw: "140g pavé de saumon", alt: "Filet de truite ou maquereau" },
+      { raw: "150g brocolis", alt: "Chou romanesco ou chou de Bruxelles" },
+      { raw: "100g lentilles cuites", alt: "Haricots rouges" }
+    ], 
+    steps: ["Cuis le saumon au four à 180°C pendant 12 min.", "Cuis le brocolis à la vapeur."] 
+  },
+  { 
+    id: 10, category: "diner", title: "Chili Express Dinde & Haricots Rouges", prepTime: "15 min", proteins: "40g", protValue: 40, fibers: "12g", omega3: "Moyen", 
+    ingredients: [
+      { raw: "150g haché de dinde 5%", alt: "Haché de poulet ou protéines de soja texturées" },
+      { raw: "150g haricots rouges", alt: "Haricots noirs" },
+      { raw: "200g purée de tomates", alt: "Tomates concassées en boîte" }
+    ], 
+    steps: ["Dore la dinde.", "Ajoute les haricots et la purée de tomate, puis laisse mijoter 8 min."] 
+  },
+  { 
+    id: 11, category: "diner", title: "Sauté de Bœuf aux Poivrons & Riz", prepTime: "15 min", proteins: "38g", protValue: 38, fibers: "7g", omega3: "Faible", 
+    ingredients: [
+      { raw: "150g pavé de bœuf 5%", alt: "Aiguillettes de canard ou seitan" },
+      { raw: "1 unit poivron rouge", alt: "Brocoli ou pois gourmands" },
+      { raw: "100g riz complet cuit", alt: "Riz rouge ou quinoa" }
+    ], 
+    steps: ["Émince le bœuf et les légumes.", "Fais sauter au wok à feu vif."] 
+  },
+  { 
+    id: 12, category: "diner", title: "Cabillaud Graines & Épinards", prepTime: "15 min", proteins: "36g", protValue: 36, fibers: "6g", omega3: "Très Élevé", 
+    ingredients: [
+      { raw: "160g filet de cabillaud", alt: "Eglefin, colin ou lieu noir" },
+      { raw: "15g graines de chia", alt: "Graines de sésame" },
+      { raw: "250g épinards frais", alt: "Chou vert émincé" }
+    ], 
+    steps: ["Presse le cabillaud dans les graines et cuis au four 12 min.", "Fais tomber les épinards."] 
+  },
+  { 
+    id: 20, category: "diner", title: "Curry de Poulet & Chou-Fleur", prepTime: "18 min", proteins: "35g", protValue: 35, fibers: "9g", omega3: "Moyen", 
+    ingredients: [
+      { raw: "150g filet de poulet", alt: "Dés de tofu ferme ou escalope de dinde" },
+      { raw: "200g chou-fleur", alt: "Brocoli" },
+      { raw: "100ml lait de coco léger", alt: "Crème de soja" }
+    ], 
+    steps: ["Dore le poulet.", "Ajoute le chou-fleur, le curry et le lait de coco."] 
+  },
+  { 
+    id: 21, category: "diner", title: "Omelette Fluffy aux Crevettes", prepTime: "10 min", proteins: "34g", protValue: 34, fibers: "4g", omega3: "Élevé", 
+    ingredients: [
+      { raw: "3 unit œufs", alt: "200g tofu soyeux assaisonné" },
+      { raw: "100g crevettes", alt: "Moules ou dinde émincée" },
+      { raw: "1/2 unit courgette", alt: "Champignons de Paris" }
+    ], 
+    steps: ["Fais sauter la courgette.", "Ajoute les crevettes puis les œufs battus."] 
+  },
 
-  { id: 13, category: "snack", title: "Shaker Protéiné & Noix", prepTime: "2 min", proteins: "25g", protValue: 25, fibers: "3g", omega3: "Élevé", ingredients: ["30g protéine vanille", "20g cerneaux de noix"], steps: ["Mélange la protéine avec de l'eau.", "Consomme avec les noix."] },
-  { id: 14, category: "snack", title: "Pomme & Beurre de Cacahuète", prepTime: "2 min", proteins: "8g", protValue: 8, fibers: "6g", omega3: "Faible", ingredients: ["1 unit pomme", "20g beurre de cacahuète"], steps: ["Tranche la pomme et tartine de beurre de cacahuète."] },
-  { id: 15, category: "snack", title: "Fromage Blanc & Graines de Lin", prepTime: "2 min", proteins: "20g", protValue: 20, fibers: "4g", omega3: "Élevé", ingredients: ["200g fromage blanc 0%", "10g graines de lin moulues"], steps: ["Mélange le fromage blanc et les graines de lin."] },
-  { id: 22, category: "snack", title: "Muffin Mug Protéiné Minute", prepTime: "3 min", proteins: "22g", protValue: 22, fibers: "5g", omega3: "Moyen", ingredients: ["1 unit œuf", "25g protéine vanille", "10g flocons d'avoine"], steps: ["Mélange dans une tasse.", "Cuis au micro-ondes pendant 50 secondes."] },
-  { id: 23, category: "snack", title: "Tzatziki Protéiné & Concombre", prepTime: "4 min", proteins: "15g", protValue: 15, fibers: "3g", omega3: "Faible", ingredients: ["1/2 unit concombre", "150g skyr"], steps: ["Mélange le Skyr avec l'ail/citron.", "Trempe les rondelles de concombre."] }
+  { 
+    id: 13, category: "snack", title: "Shaker Protéiné & Noix", prepTime: "2 min", proteins: "25g", protValue: 25, fibers: "3g", omega3: "Élevé", 
+    ingredients: [
+      { raw: "30g protéine vanille", alt: "Protéine de riz/pois ou whey" },
+      { raw: "20g cerneaux de noix", alt: "Amandes ou noisettes" }
+    ], 
+    steps: ["Mélange la protéine avec de l'eau.", "Consomme avec les noix."] 
+  },
+  { 
+    id: 14, category: "snack", title: "Pomme & Beurre de Cacahuète", prepTime: "2 min", proteins: "8g", protValue: 8, fibers: "6g", omega3: "Faible", 
+    ingredients: [
+      { raw: "1 unit pomme", alt: "Poire" },
+      { raw: "20g beurre de cacahuète", alt: "Purée d'amandes complètes ou de cajou" }
+    ], 
+    steps: ["Tranche la pomme et tartine de beurre de cacahuète."] 
+  },
+  { 
+    id: 15, category: "snack", title: "Fromage Blanc & Graines de Lin", prepTime: "2 min", proteins: "20g", protValue: 20, fibers: "4g", omega3: "Élevé", 
+    ingredients: [
+      { raw: "200g fromage blanc 0%", alt: "Skyr ou yaourt végétal enrichi" },
+      { raw: "10g graines de lin moulues", alt: "Graines de chia moulues" }
+    ], 
+    steps: ["Mélange le fromage blanc et les graines de lin."] 
+  },
+  { 
+    id: 22, category: "snack", title: "Muffin Mug Protéiné Minute", prepTime: "3 min", proteins: "22g", protValue: 22, fibers: "5g", omega3: "Moyen", 
+    ingredients: [
+      { raw: "1 unit œuf", alt: "50g compote de pommes" },
+      { raw: "25g protéine vanille", alt: "Protéine chocolat" },
+      { raw: "10g flocons d'avoine", alt: "Farine d'amande" }
+    ], 
+    steps: ["Mélange dans une tasse.", "Cuis au micro-ondes pendant 50 secondes."] 
+  },
+  { 
+    id: 23, category: "snack", title: "Tzatziki Protéiné & Concombre", prepTime: "4 min", proteins: "15g", protValue: 15, fibers: "3g", omega3: "Faible", 
+    ingredients: [
+      { raw: "1/2 unit concombre", alt: "Rondelles de radis noir" },
+      { raw: "150g skyr", alt: "Yaourt grec 0% ou spécialité végétale au soja" }
+    ], 
+    steps: ["Mélange le Skyr avec l'ail/citron.", "Trempe les rondelles de concombre."] 
+  }
 ];
 
 // PROGRAMMES D'ENTRAÎNEMENT
@@ -115,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupNotifications();
 });
 
-// GESTION DU NAVIGATION
+// GESTION DE LA NAVIGATION
 function setupNavigation() {
   const navItems = document.querySelectorAll('.nav-item');
   const tabPanes = document.querySelectorAll('.tab-pane');
@@ -325,7 +516,7 @@ function updateRecipeCount(id, delta) {
   renderRecipes(document.querySelector('.filter-btn.active').getAttribute('data-filter'));
 }
 
-// 6. LISTE DE COURSES AVEC CALCUL DES QUANTITÉS
+// 6. LISTE DE COURSES AVEC CALCUL DES QUANTITÉS ET ALTERNATIVES
 function renderGroceries() {
   const container = document.getElementById('groceries-container');
   const activeIds = Object.keys(selectedRecipesMap);
@@ -349,7 +540,10 @@ function renderGroceries() {
     const recipe = recipesData.find(r => r.id === id);
 
     if (recipe) {
-      recipe.ingredients.forEach(rawIng => {
+      recipe.ingredients.forEach(ingObj => {
+        const rawIng = typeof ingObj === 'string' ? ingObj : ingObj.raw;
+        const altText = typeof ingObj === 'object' && ingObj.alt ? ingObj.alt : null;
+
         // Format typique: "50g flocons d'avoine" ou "3 unit œufs"
         const match = rawIng.match(/^(\d+(?:\.\d+)?)\s*([a-zA-Z%]+)?\s+(.*)$/);
         
@@ -359,26 +553,42 @@ function renderGroceries() {
           const name = match[3].toLowerCase().trim();
           const key = `${name}_${unit}`;
 
-          if (aggregated[key]) aggregated[key].qty += qty;
-          else aggregated[key] = { name: match[3], qty, unit };
+          if (aggregated[key]) {
+            aggregated[key].qty += qty;
+          } else {
+            aggregated[key] = { name: match[3], qty, unit, alternatives: altText ? [altText] : [] };
+          }
+          if (altText && aggregated[key].alternatives && !aggregated[key].alternatives.includes(altText)) {
+            aggregated[key].alternatives.push(altText);
+          }
         } else {
-          // Si pas de quantité numérique directe
           const key = rawIng.toLowerCase().trim();
-          if (aggregated[key]) aggregated[key].qty += count;
-          else aggregated[key] = { name: rawIng, qty: count, unit: 'x' };
+          if (aggregated[key]) {
+            aggregated[key].qty += count;
+          } else {
+            aggregated[key] = { name: rawIng, qty: count, unit: 'x', alternatives: altText ? [altText] : [] };
+          }
+          if (altText && aggregated[key].alternatives && !aggregated[key].alternatives.includes(altText)) {
+            aggregated[key].alternatives.push(altText);
+          }
         }
       });
     }
   });
 
   const groceryListHtml = Object.values(aggregated).map(item => {
-    const formattedText = item.unit === 'x' ? `${item.name} (${item.qty}x)` : `${item.qty}${item.unit} ${item.name}`;
+    const baseText = item.unit === 'x' ? `${item.name} (${item.qty}x)` : `${item.qty}${item.unit} ${item.name}`;
+    const altStr = item.alternatives && item.alternatives.length > 0 ? ` (ou : ${item.alternatives.join(', ')})` : '';
+    const formattedText = `${baseText}${altStr}`;
     const isChecked = checkedGroceryItems.includes(formattedText) ? 'checked' : '';
 
     return `
       <label class="grocery-item ${isChecked ? 'checked' : ''}">
         <input type="checkbox" ${isChecked} onchange="toggleGroceryCheck('${formattedText.replace(/'/g, "\\'")}', this)">
-        <span>${formattedText}</span>
+        <div>
+          <span>${baseText}</span>
+          ${item.alternatives && item.alternatives.length > 0 ? `<span class="alt-tag">Ou alternative : ${item.alternatives.join(' / ')}</span>` : ''}
+        </div>
       </label>
     `;
   }).join('');
@@ -417,7 +627,12 @@ function openRecipeModal(id) {
     
     <h3 style="margin-top: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem;">Ingrédients (1 portion)</h3>
     <ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6;">
-      ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+      ${recipe.ingredients.map(ing => {
+        if (typeof ing === 'object') {
+          return `<li><strong>${ing.raw}</strong>${ing.alt ? ` <br><span class="alt-tag">💡 Alternative : ${ing.alt}</span>` : ''}</li>`;
+        }
+        return `<li>${ing}</li>`;
+      }).join('')}
     </ul>
 
     <h3 style="margin-top: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem;">Préparation</h3>

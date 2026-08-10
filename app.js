@@ -1,3 +1,21 @@
+// ENREGISTREMENT DU SERVICE WORKER AVEC MISE À JOUR AUTO
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').then((registration) => {
+      // Vérifie s'il y a une nouvelle version sur le serveur
+      registration.onupdatefound = () => {
+        const installingWorker = registration.installing;
+        installingWorker.onstatechange = () => {
+          if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            // Nouvelle version détectée -> on force le rechargement de la page
+            window.location.reload();
+          }
+        };
+      };
+    });
+  });
+}
+
 // DONNÉES DE PLANIFICATION QUOTIDIENNE (QUOI FAIRE & QUAND)
 const scheduleData = [
   { time: "07:30", desc: "Hydratation (500ml d'eau) + Réveil corporel & Étirements légers." },
@@ -13,8 +31,9 @@ const scheduleData = [
   { time: "22:30", desc: "Coupure des écrans / Filtre lumière bleue. Préparation au sommeil." }
 ];
 
-// DONNÉES DES RECETTES DÉTAILLÉES ÉTAPE PAR ÉTAPE (15 RECETTES)
+// DONNÉES DES RECETTES DÉTAILLÉES ÉTAPE PAR ÉTAPE (23 RECETTES)
 const recipesData = [
+  // --- PETITS-DÉJEUNERS ---
   {
     id: 1,
     category: "pdej",
@@ -35,11 +54,11 @@ const recipesData = [
   {
     id: 2,
     category: "pdej",
-    title: "Omelette Épinards & Pain au Leveain",
+    title: "Omelette Épinards & Pain au Levain",
     prepTime: "8 min",
     proteins: "26g",
     fibers: "6g",
-    omega3: "Élevé (Eggs Bleu-Blanc-Cœur)",
+    omega3: "Élevé (Œufs Bleu-Blanc-Cœur)",
     ingredients: ["3 œufs entiers", "1 poignée d'épinards frais", "2 tranches de pain complet au levain", "1 c.à.s d'huile d'olive"],
     steps: [
       "Casse et bats les 3 œufs dans un bol avec une pincée de sel et de poivre.",
@@ -61,7 +80,7 @@ const recipesData = [
     steps: [
       "Dans un grand bol, mélange le Skyr avec la protéine en poudre jusqu'à obtenir une texture lisse.",
       "Écrase légèrement les cerneaux de noix de Grenoble entre tes mains et parsème-les sur le dessus.",
-      "Decoupe la demi-banane en rondelles et ajoute-les pour apporter des glucides à digestion progressive."
+      "Découpe la demi-banane en rondelles et ajoute-les pour apporter des glucides à digestion progressive."
     ]
   },
   {
@@ -81,6 +100,40 @@ const recipesData = [
       "Fais cuire 2 minutes de chaque côté jusqu'à coloration dorée."
     ]
   },
+  {
+    id: 16,
+    category: "pdej",
+    title: "Toast Avocat, Œuf Poché & Saumon Fumé",
+    prepTime: "8 min",
+    proteins: "27g",
+    fibers: "7g",
+    omega3: "Excellence EPA/DHA",
+    ingredients: ["2 tranches de pain seigle/complet", "1/2 avocat", "1 œuf entier", "50g de saumon fumé", "Jus de citron & Graines de sésame"],
+    steps: [
+      "Fais griller les tranches de pain de seigle.",
+      "Écrase le demi-avocat à la fourchette avec un filet de citron, du sel et du poivre, puis étale sur les toasts.",
+      "Dépose le saumon fumé sur l'avocat.",
+      "Fais pocher ou cuire au plat l'œuf et dépose-le au-dessus.",
+      "Saupoudre de graines de sésame."
+    ]
+  },
+  {
+    id: 17,
+    category: "pdej",
+    title: "Smoothie Bowl Protéiné Framboise & Lin",
+    prepTime: "5 min",
+    proteins: "29g",
+    fibers: "10g",
+    omega3: "Très Élevé",
+    ingredients: ["200g de fromage blanc 0%", "100g de framboises surgelées", "1 scoop de protéine vanille", "15g graines de lin moulues", "10g amandes effilées"],
+    steps: [
+      "Mixe le fromage blanc, les framboises encore surgelées et la protéine jusqu'à consistance onctueuse et très fraîche.",
+      "Verse dans un bowl.",
+      "Ajoute les graines de lin moulues et les amandes effilées sur le dessus pour le croquant."
+    ]
+  },
+
+  // --- DÉJEUNERS ---
   {
     id: 5,
     category: "dejeuner",
@@ -117,7 +170,7 @@ const recipesData = [
   {
     id: 7,
     category: "dejeuner",
-    title: "Wrap Integrale Poulet, Houmous & Crudités",
+    title: "Wrap Intégral Poulet, Houmous & Crudités",
     prepTime: "7 min",
     proteins: "36g",
     fibers: "10g",
@@ -146,6 +199,40 @@ const recipesData = [
       "Égoutte les pâtes, mélange-les aux courgettes et ajoute les filets de maquereau émiettés."
     ]
   },
+  {
+    id: 18,
+    category: "dejeuner",
+    title: "Salade TIÈDE de Lentilles, Sardines & Échalotes",
+    prepTime: "6 min",
+    proteins: "35g",
+    fibers: "12g",
+    omega3: "Excellence EPA/DHA",
+    ingredients: ["200g de lentilles cuites", "1 boîte de sardines au naturel ou huile d'olive", "1 échalote hachée", "1 c.à.s moutarde à l'ancienne", "1 c.à.s huile de colza"],
+    steps: [
+      "Réchauffe très légèrement les lentilles au micro-ondes (1 min).",
+      "Dans un bol, mélange la moutarde, l'huile de colza et l'échalote finement hachée.",
+      "Incorpore les lentilles tièdes et mélange pour qu'elles s'imprégnent de la vinaigrette.",
+      "Dépose les sardines par-dessus sans trop les émietter."
+    ]
+  },
+  {
+    id: 19,
+    category: "dejeuner",
+    title: "Bowl Crevettes, Riz Noir & Poivrons Saautés",
+    prepTime: "12 min",
+    proteins: "33g",
+    fibers: "6g",
+    omega3: "Élevé",
+    ingredients: ["150g de crevettes décortiquées", "120g de riz noir cuit", "1 poivron rouge coupé en dés", "1 c.à.s d'huile de sésame", "Sauce soja réduite en sel"],
+    steps: [
+      "Fais sauter les dés de poivron dans une poêle avec l'huile de sésame pendant 5 minutes.",
+      "Ajoute les crevettes et fais cuire 3 à 4 minutes supplémentaires.",
+      "Déglace avec un trait de sauce soja.",
+      "Sers chaud sur le lit de riz noir."
+    ]
+  },
+
+  // --- DÎNERS ---
   {
     id: 9,
     category: "diner",
@@ -212,6 +299,40 @@ const recipesData = [
     ]
   },
   {
+    id: 20,
+    category: "diner",
+    title: "Curry de Tofu/Poulet, Choux Fleurs & Lait de Coco Léger",
+    prepTime: "18 min",
+    proteins: "35g",
+    fibers: "9g",
+    omega3: "Moyen",
+    ingredients: ["150g filet de poulet ou Tofu", "200g chou-fleur en petits morceaux", "100ml lait de coco léger", "1 c.à.s de pâte de curry jaune", "1 c.à.s huile de colza"],
+    steps: [
+      "Découpe le poulet/tofu en dés et fais-les dorer dans l'huile de colza pendant 4 minutes.",
+      "Ajoute les morceaux de chou-fleur et la pâte de curry.",
+      "Verse le lait de coco léger et 50ml d'eau.",
+      "Laisse mijoter à couvert pendant 10 minutes jusqu'à ce que le chou-fleur soit tendre."
+    ]
+  },
+  {
+    id: 21,
+    category: "diner",
+    title: "Omelette Fluffy aux Crevettes & Herbes Fraîches",
+    prepTime: "10 min",
+    proteins: "34g",
+    fibers: "4g",
+    omega3: "Élevé",
+    ingredients: ["3 œufs entiers", "100g de crevettes cuites", "Aneth et ciboulette", "1/2 courgette râpée", "1 c.à.s d'huile d'olive"],
+    steps: [
+      "Bats les œufs avec les herbes ciselées, le sel et le poivre.",
+      "Fais revenir la courgette râpée dans la poêle avec l'huile d'olive pendant 3 minutes.",
+      "Ajoute les crevettes, puis verse les œufs battus.",
+      "Laisse cuire à feu doux pendant 4 à 5 minutes pour garder l'omelette baveuse et légère."
+    ]
+  },
+
+  // --- COLLATION / SNACKS ---
+  {
     id: 13,
     category: "snack",
     title: "Shaker Protéiné & Noix de Grenoble",
@@ -230,7 +351,7 @@ const recipesData = [
   {
     id: 14,
     category: "snack",
-    title: "Pomme Crue & Beurre de Cacahuète Pure",
+    title: "Pomme Crue & Beurre de Cacahuète Pur",
     prepTime: "2 min",
     proteins: "8g",
     fibers: "6g",
@@ -255,6 +376,37 @@ const recipesData = [
       "Verse le fromage blanc 0% dans un ramequin.",
       "Mouds les graines de lin au dernier moment pour préserver la qualité des oméga-3.",
       "Incorpore les graines et un trait d'arôme vanille ou stévia, puis mélange bien."
+    ]
+  },
+  {
+    id: 22,
+    category: "snack",
+    title: "Muffin Mug Protéiné Minute (Micro-Ondes)",
+    prepTime: "3 min",
+    proteins: "22g",
+    fibers: "5g",
+    omega3: "Moyen",
+    ingredients: ["1 œuf", "25g de protéine en poudre (Chocolat ou Vanille)", "10g de farine d'avoine", "2 c.à.s de lait", "1/2 c.à.c de levure"],
+    steps: [
+      "Dans une grande tasse (mug), fouette l'œuf avec le lait.",
+      "Ajoute la protéine, la farine d'avoine et la levure.",
+      "Mélange bien à la fourchette jusqu'à consistance homogène.",
+      "Cuis au micro-ondes pendant 50 à 60 secondes (600W-800W). Laisse tiédir avant de déguster !"
+    ]
+  },
+  {
+    id: 23,
+    category: "snack",
+    title: "Rondelles de Concombre & Tzatziki Protéiné",
+    prepTime: "4 min",
+    proteins: "15g",
+    fibers: "3g",
+    omega3: "Faible",
+    ingredients: ["1/2 concombre", "150g de Skyr", "1 c.à.c d'huile d'olive", "Jus de citron, ail en poudre, menthe"],
+    steps: [
+      "Dans un ramequin, mélange le Skyr avec l'huile d'olive, l'ail en poudre, la menthe ciselée et un trait de citron.",
+      "Tranche le demi-concombre en rondelles épaisses.",
+      "Utilise les rondelles de concombre comme toasts pour tremper dans le tzatziki maison."
     ]
   }
 ];

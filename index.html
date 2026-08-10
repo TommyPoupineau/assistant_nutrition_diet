@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevFit - Recomposition Corporelle</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <!-- Ionicons pour des icônes modernes -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+
+  <!-- EN-TÊTE DE L'APPLICATION -->
+  <header class="app-header">
+    <div class="user-info">
+      <h1>DevFit Coach</h1>
+      <p>Objectif : 1800 kcal | 165g Protéines</p>
+    </div>
+    <button id="btn-notification" class="icon-btn" title="Activer les notifications">
+      <ion-icon name="notifications-outline"></ion-icon>
+    </button>
+  </header>
+
+  <!-- CONTENU PRINCIPAL (NAVIGATION PAR ONGLETS) -->
+  <main class="app-content">
+
+    <!-- TAB 1 : PLANNING DU JOUR (QUOI FAIRE & QUAND) -->
+    <section id="tab-today" class="tab-pane active">
+      <h2><ion-icon name="today-outline"></ion-icon> Programme du Jour</h2>
+      <p class="subtitle">Suis ton fil conducteur quotidien pour maximiser tes résultats.</p>
+      
+      <div class="timeline" id="daily-timeline">
+        <!-- Généré dynamiquement par JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 2 : RECETTES DÉTAILLÉES ÉTAPE PAR ÉTAPE -->
+    <section id="tab-recipes" class="tab-pane">
+      <h2><ion-icon name="restaurant-outline"></ion-icon> Recettes & Nutrition</h2>
+      <div class="filter-tags">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="pdej">Petit-Déj</button>
+        <button class="filter-btn" data-filter="dejeuner">Déjeuner</button>
+        <button class="filter-btn" data-filter="diner">Dîner</button>
+        <button class="filter-btn" data-filter="snack">Encas</button>
+      </div>
+
+      <div class="recipes-grid" id="recipes-list">
+        <!-- Généré dynamiquement par JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 3 : ENTRAÎNEMENTS INTERACTIFS -->
+    <section id="tab-workout" class="tab-pane">
+      <h2><ion-icon name="barbell-outline"></ion-icon> Entraînement</h2>
+      <div class="workout-selector">
+        <button class="workout-tab-btn active" onclick="switchWorkout('A')">Séance A (Posture/Force)</button>
+        <button class="workout-tab-btn" onclick="switchWorkout('B')">Séance B (HIIT Métabolique)</button>
+      </div>
+
+      <div id="workout-details" class="workout-card">
+        <!-- Généré dynamiquement par JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 4 : RÈGLES DE VIE SÉDENTAIRE -->
+    <section id="tab-habits" class="tab-pane">
+      <h2><ion-icon name="shield-checkmark-outline"></ion-icon> 5 Règles d'Or Dev</h2>
+      <div class="habits-list">
+        <div class="habit-card">
+          <ion-icon name="timer-outline" class="habit-icon"></ion-icon>
+          <div>
+            <h3>1. La règle 50 / 5</h3>
+            <p>Toutes les 50 minutes, lève-toi 5 minutes. Fais 10 squats ou étire tes hanches.</p>
+          </div>
+        </div>
+        <div class="habit-card">
+          <ion-icon name="water-outline" class="habit-icon"></ion-icon>
+          <div>
+            <h3>2. Gourde 1.5L sur le bureau</h3>
+            <p>À terminer avant 16h00. Génère des pauses naturelles pour bouger.</p>
+          </div>
+        </div>
+        <div class="habit-card">
+          <ion-icon name="desktop-outline" class="habit-icon"></ion-icon>
+          <div>
+            <h3>3. Zero grignotage devant l'écran</h3>
+            <p>Mange toujours éloigné de ton poste de travail pour respecter la satiété.</p>
+          </div>
+        </div>
+        <div class="habit-card">
+          <ion-icon name="body-outline" class="habit-icon"></ion-icon>
+          <div>
+            <h3>4. Ergonomie Écran & Posture</h3>
+            <p>Haut du moniteur au niveau des yeux. Alterne assis/debout si possible.</p>
+          </div>
+        </div>
+        <div class="habit-card">
+          <ion-icon name="moon-outline" class="habit-icon"></ion-icon>
+          <div>
+            <h3>5. Sommeil & Filtre Lumière Bleue</h3>
+            <p>Coupe les écrans 45 min avant de dormir. Vise 7h30 à 8h par nuit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DETAILS RECETTE ÉTAPE PAR ÉTAPE -->
+  <div id="recipe-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- BARRE DE NAVIGATION EN BAS (MOBILE FIRST) -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-tab="tab-today">
+      <ion-icon name="today-outline"></ion-icon>
+      <span>Aujourd'hui</span>
+    </button>
+    <button class="nav-item" data-tab="tab-recipes">
+      <ion-icon name="restaurant-outline"></ion-icon>
+      <span>Recettes</span>
+    </button>
+    <button class="nav-item" data-tab="tab-workout">
+      <ion-icon name="fitness-outline"></ion-icon>
+      <span>Sport</span>
+    </button>
+    <button class="nav-item" data-tab="tab-habits">
+      <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+      <span>Habitudes</span>
+    </button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

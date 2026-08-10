@@ -1,4 +1,4 @@
-const CACHE_NAME = 'devfit-v5';
+const CACHE_NAME = 'devfit-v6';
 const ASSETS = [
   './',
   './index.html',

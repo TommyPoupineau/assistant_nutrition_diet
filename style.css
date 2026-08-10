@@ -294,6 +294,14 @@ body {
 .badge-prot { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
 .badge-omega { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
 
+.alt-tag {
+  color: var(--badge-omega);
+  font-size: 0.8rem;
+  font-style: italic;
+  display: block;
+  margin-top: 0.1rem;
+}
+
 /* LISTE DE COURSES */
 .grocery-empty {
   text-align: center;

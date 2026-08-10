@@ -1,19 +1,19 @@
 // DONNÉES DE PLANIFICATION QUOTIDIENNE (QUOI FAIRE & QUAND)
 const scheduleData = [
   { time: "07:30", desc: "Hydratation (500ml d'eau) + Réveil corporel & Étirements légers." },
-  { time: "08:00", desc: "Petit-Déjeuner : Overnight Oats ou Omelette Protéinée." },
-  { time: "09:00", desc: "Début de la session Dev. Remplis ta gourde de 1.5L d'eau." },
+  { time: "08:00", desc: "Petit-Déjeuner : Overnight Oats, Omelette ou Bowl Skyr." },
+  { time: "09:00", desc: "Début de la session Dev. Remplis ta gourde de 1.5L d'eau sur ton bureau." },
   { time: "10:00", desc: "Pause Active 5 min : 10 squats + étirement des hanches (Règle 50/5)." },
   { time: "11:00", desc: "Pause Active 5 min : Marche rapide dans le logement." },
-  { time: "12:30", desc: "Déjeuner hors de l'écran (Ex: Salade Thon & Cannellini / Bowl Saumon)." },
+  { time: "12:30", desc: "Déjeuner hors de l'écran (Ex: Salade Thon, Bowl Saumon ou Wrap Poulet)." },
   { time: "14:00", desc: "Reprise du travail + Pause Active 5 min." },
-  { time: "16:00", desc: "Collation : Shaker Protéiné + Noix de Grenoble (Gourde 1.5L terminée !)." },
+  { time: "16:00", desc: "Collation : Shaker Protéiné, Pomme/Beurre d'amande ou Fromage Blanc." },
   { time: "18:00", desc: "Séance de Sport à la maison (35-45 min)." },
-  { time: "20:00", desc: "Dîner : Pavé de Saumon, Brocolis & Lentilles." },
+  { time: "20:00", desc: "Dîner : Saumon/Brocolis, Chili Dinde ou Cabillaud Croûte de Graines." },
   { time: "22:30", desc: "Coupure des écrans / Filtre lumière bleue. Préparation au sommeil." }
 ];
 
-// DONNÉES DES RECETTES DÉTAILLÉES ÉTAPE PAR ÉTAPE
+// DONNÉES DES RECETTES DÉTAILLÉES ÉTAPE PAR ÉTAPE (15 RECETTES)
 const recipesData = [
   {
     id: 1,
@@ -22,35 +22,67 @@ const recipesData = [
     prepTime: "5 min (la veille)",
     proteins: "28g",
     fibers: "12g",
-    omega3: "Élevé",
+    omega3: "Très Élevé",
     ingredients: ["50g flocons d'avoine", "200g fromage blanc 0%", "15g graines de chia", "10g graines de lin moulues", "Poignée de myrtilles"],
     steps: [
-      "Dans un bocal ou un récipient, verse les 50g de flocons d'avoine.",
-      "Ajoute les 15g de graines de chia et les 10g de graines de lin préalablement moulues (pour une absorption maximale des Oméga-3).",
+      "Dans un bocal ou un récipient hermétique, verse les 50g de flocons d'avoine.",
+      "Ajoute les 15g de graines de chia et les 10g de graines de lin préalablement moulues (essentiel pour assimiler les Oméga-3).",
       "Incorpore les 200g de fromage blanc 0% et mélange le tout vigoureusement.",
-      "Ajoute un filet d'eau si la consistance est trop dense.",
+      "Ajoute un filet d'eau si la consistance est trop dense pour détendre le mélange.",
       "Dépose les myrtilles sur le dessus, ferme le récipient et réserve au réfrigérateur toute la nuit."
     ]
   },
   {
     id: 2,
     category: "pdej",
-    title: "Omelette Revisitée & Épinards sur Pain Complet",
+    title: "Omelette Épinards & Pain au Leveain",
     prepTime: "8 min",
     proteins: "26g",
     fibers: "6g",
-    omega3: "Moyen (Œufs Bleu-Blanc-Cœur)",
+    omega3: "Élevé (Eggs Bleu-Blanc-Cœur)",
     ingredients: ["3 œufs entiers", "1 poignée d'épinards frais", "2 tranches de pain complet au levain", "1 c.à.s d'huile d'olive"],
     steps: [
-      "Bats les 3 œufs dans un bol avec une pincée de sel et de poivre.",
-      "Fais chauffer l'huile d'olive dans une poêle antiadhésive à feu moyen.",
+      "Casse et bats les 3 œufs dans un bol avec une pincée de sel et de poivre.",
+      "Fais chauffer l'huile d'olive dans une poêle à feu moyen.",
       "Jette la poignée d'épinards frais dans la poêle et fais-les tomber pendant 1 minute.",
-      "Verse les œufs battus par-dessus les épinards. Laisse cuire 3 à 4 minutes selon ta préférence de cuisson.",
-      "Fais griller les 2 tranches de pain complet et sers l'omelette bien chaude dessus."
+      "Verse les œufs battus par-dessus les épinards. Laisse cuire 3 à 4 minutes.",
+      "Fais griller les 2 tranches de pain complet au levain et sers l'omelette bien chaude dessus."
     ]
   },
   {
     id: 3,
+    category: "pdej",
+    title: "Bowl Froment, Skyr & Noix de Grenoble",
+    prepTime: "3 min",
+    proteins: "32g",
+    fibers: "5g",
+    omega3: "Très Élevé",
+    ingredients: ["250g de Skyr ou Kéfir", "1 scoop de protéine en poudre (vanille)", "20g de cerneaux de noix", "1/2 banane"],
+    steps: [
+      "Dans un grand bol, mélange le Skyr avec la protéine en poudre jusqu'à obtenir une texture lisse.",
+      "Écrase légèrement les cerneaux de noix de Grenoble entre tes mains et parsème-les sur le dessus.",
+      "Decoupe la demi-banane en rondelles et ajoute-les pour apporter des glucides à digestion progressive."
+    ]
+  },
+  {
+    id: 4,
+    category: "pdej",
+    title: "Pancakes Protéinés Avoine & Graines de Chia",
+    prepTime: "10 min",
+    proteins: "30g",
+    fibers: "8g",
+    omega3: "Moyen",
+    ingredients: ["60g flocons d'avoine mixés", "2 œufs entiers", "100g de fromage blanc 0%", "10g graines de chia", "1 c.à.c de levure chimique"],
+    steps: [
+      "Mixe les flocons d'avoine pour obtenir une texture de farine.",
+      "Dans un cul-de-poule, mélange la farine d'avoine, les 2 œufs, le fromage blanc, les graines de chia et la levure.",
+      "Laisse reposer la pâte 2 minutes pour que les graines de chia gélifient légèrement.",
+      "Dans une poêle chaude légèrement huilée, verse de petites louches de pâte.",
+      "Fais cuire 2 minutes de chaque côté jusqu'à coloration dorée."
+    ]
+  },
+  {
+    id: 5,
     category: "dejeuner",
     title: "Salade Express Thon, Cannellini & Colza",
     prepTime: "5 min",
@@ -59,15 +91,63 @@ const recipesData = [
     omega3: "Très Élevé",
     ingredients: ["1 boîte de thon au naturel (120g)", "150g haricots blancs (cannellini)", "Tomates concassées", "1.5 c.à.s d'huile de colza", "Jus de citron"],
     steps: [
-      "Égoutte et rince les haricots blancs (cannellini) à l'eau froide.",
+      "Égoutte et rince les haricots blancs (cannellini) sous l'eau froide.",
       "Dans un grand bol, émiette le thon au naturel.",
       "Ajoute les haricots blancs et 3 cuillères à soupe de tomates concassées.",
-      "Assaisonne avec la cuillère et demi d'huile de colza (riche en Oméga-3, ne pas chauffer).",
-      "Arrose d'un filet de jus de citron, sale, poivre et mélange."
+      "Assaisonne avec la cuillère et demi d'huile de colza (cru, ne pas chauffer).",
+      "Arrose d'un filet de jus de citron, sale, poivre et mélange énergiquement."
     ]
   },
   {
-    id: 4,
+    id: 6,
+    category: "dejeuner",
+    title: "Bowl Saumon Fumé, Quinoa & Avocat",
+    prepTime: "10 min",
+    proteins: "35g",
+    fibers: "9g",
+    omega3: "Excellence EPA/DHA",
+    ingredients: ["100g de saumon fumé", "120g de quinoa cuit", "1/2 avocat", "Concombre en dés", "Graines de sésame"],
+    steps: [
+      "Dispose le quinoa cuit (préalablement préparé lors de ton batchcooking) au fond d'un bowl.",
+      "Découpe le saumon fumé et le demi-avocat en tranches épaisses.",
+      "Ajoute le concombre coupé en petits dés pour apporter du croquant.",
+      "Parsème de graines de sésame et assaisonne d'un filet d'huile de colza ou de soja."
+    ]
+  },
+  {
+    id: 7,
+    category: "dejeuner",
+    title: "Wrap Integrale Poulet, Houmous & Crudités",
+    prepTime: "7 min",
+    proteins: "36g",
+    fibers: "10g",
+    omega3: "Modéré",
+    ingredients: ["1 grande tortilla intégrale", "130g d'aiguillettes de poulet", "2 c.à.s de houmous", "Carottes râpées", "Jeunes pousses d'épinard"],
+    steps: [
+      "Fais poêler les aiguillettes de poulet 4 à 5 minutes avec un filet d'huile d'olive.",
+      "Étale les 2 cuillères à soupe de houmous sur toute la surface de la tortilla intégrale.",
+      "Dépose les jeunes pousses d'épinard et les carottes râpées.",
+      "Dispose le poulet tiède au centre, rabats les côtés et enroule le wrap fermement."
+    ]
+  },
+  {
+    id: 8,
+    category: "dejeuner",
+    title: "Pâtes Complètes au Maquereau & Courgettes",
+    prepTime: "12 min",
+    proteins: "34g",
+    fibers: "8g",
+    omega3: "Très Élevé",
+    ingredients: ["60g (cru) pâtes complètes", "1 boîte de maquereau au naturel", "1 courgette", "1 gousse d'ail", "1 c.à.s d'huile d'olive"],
+    steps: [
+      "Fais cuire les pâtes complètes dans l'eau bouillante salée selon le temps indiqué sur le paquet.",
+      "Pendant ce temps, découpe la courgette en fines rondelles et hache la gousse d'ail.",
+      "Fais revenir la courgette et l'ail dans une poêle avec l'huile d'olive pendant 6 à 8 minutes.",
+      "Égoutte les pâtes, mélange-les aux courgettes et ajoute les filets de maquereau émiettés."
+    ]
+  },
+  {
+    id: 9,
     category: "diner",
     title: "Pavé de Saumon, Brocolis & Lentilles",
     prepTime: "20 min",
@@ -78,15 +158,63 @@ const recipesData = [
     steps: [
       "Préchauffe ton four à 180°C.",
       "Coupe le brocolis en fleurettes et fais-les cuire à la vapeur pendant 10 minutes.",
-      "Dépose le pavé de saumon sur une plaque couverte de papier cuisson, sale, poivre et enfourne pendant 12 à 15 minutes.",
+      "Dépose le pavé de saumon sur une plaque couverte de papier cuisson, sale, poivre et enfourne pendant 12 minutes.",
       "Réchauffe les lentilles vertes dans une petite casserole à feu doux.",
-      "Assemble dans ton assiette : le saumon, les brocolis arrosés d'un trait d'huile d'olive/ail et les lentilles."
+      "Assemble dans ton assiette : le saumon, les brocolis arrosés d'un trait d'huile d'olive et les lentilles."
     ]
   },
   {
-    id: 5,
+    id: 10,
+    category: "diner",
+    title: "Chili Express Dinde & Haricots Rouges",
+    prepTime: "15 min",
+    proteins: "40g",
+    fibers: "12g",
+    omega3: "Moyen",
+    ingredients: ["150g haché de dinde 5%", "150g haricots rouges cuits", "200g purée de tomates", "Épices chili", "1 c.à.s huile d'olive"],
+    steps: [
+      "Fais revenir le haché de dinde dans une poêle avec l'huile d'olive à feu vif pendant 4 minutes.",
+      "Saupoudre généreusement d'épices chili, de sel et de poivre.",
+      "Ajoute les haricots rouges rincés et égouttés, puis verse la purée de tomates.",
+      "Laisse mijoter à feu doux pendant 8 à 10 minutes pour concentrer les saveurs."
+    ]
+  },
+  {
+    id: 11,
+    category: "diner",
+    title: "Sauté de Bœuf Maigre aux Poivrons & Riz Complet",
+    prepTime: "15 min",
+    proteins: "38g",
+    fibers: "7g",
+    omega3: "Faible",
+    ingredients: ["150g pavé de bœuf 5% ou Tofu ferme", "1 poivron rouge", "1/2 oignon", "100g riz complet cuit", "1 c.à.s sauce soja"],
+    steps: [
+      "Émince le bœuf (ou le tofu) en fines lanières, ainsi que le poivron et l'oignon.",
+      "Dans une poêle très chaude ou un wok, fais sauter l'oignon et le poivron avec un filet d'huile pendant 5 minutes.",
+      "Ajoute les lanières de bœuf et la sauce soja. Fais sauter 3 minutes à feu vif.",
+      "Sers immédiatement accompagné du riz complet chaud."
+    ]
+  },
+  {
+    id: 12,
+    category: "diner",
+    title: "Cabillaud en Croûte de Graines & Épinards",
+    prepTime: "15 min",
+    proteins: "36g",
+    fibers: "6g",
+    omega3: "Très Élevé",
+    ingredients: ["160g filet de cabillaud", "15g mélange graines (lin, chia, sésame)", "250g épinards frais", "1 c.à.s huile d'olive"],
+    steps: [
+      "Écrase légèrement les graines de lin et chia pour libérer leurs nutriments.",
+      "Presse le filet de cabillaud dans le mélange de graines pour former une croûte sur le dessus.",
+      "Fais cuire le cabillaud au four à 180°C pendant 12 minutes.",
+      "Pendant ce temps, fais tomber les épinards frais dans une poêle avec l'huile d'olive et de l'ail haché."
+    ]
+  },
+  {
+    id: 13,
     category: "snack",
-    title: "Encas Shaker & Noix de Grenoble",
+    title: "Shaker Protéiné & Noix de Grenoble",
     prepTime: "2 min",
     proteins: "25g",
     fibers: "3g",
@@ -96,7 +224,37 @@ const recipesData = [
       "Mets 30g de poudre de protéine dans ton shaker.",
       "Ajoute 200ml d'eau ou de lait d'amande sans sucre.",
       "Mélange vigoureusement pendant 15 secondes.",
-      "Consomme immédiatement accompagné des 20g de cerneaux de noix pour les acides gras essentiels."
+      "Consomme immédiatement accompagné des 20g de cerneaux de noix de Grenoble."
+    ]
+  },
+  {
+    id: 14,
+    category: "snack",
+    title: "Pomme Crue & Beurre de Cacahuète Pure",
+    prepTime: "2 min",
+    proteins: "8g",
+    fibers: "6g",
+    omega3: "Faible",
+    ingredients: ["1 grande pomme", "20g de beurre de cacahuète/amande 100% pur"],
+    steps: [
+      "Lave et coupe la pomme en tranches régulières.",
+      "Tartine chaque tranche d'une fine couche de beurre de cacahuète pur (sans huile de palme ni sucre ajouté).",
+      "Déguste lentement pour maximiser la satiété grâce à la pectine et aux bons lipides."
+    ]
+  },
+  {
+    id: 15,
+    category: "snack",
+    title: "Fromage Blanc 0% & Graines de Lin Moulues",
+    prepTime: "2 min",
+    proteins: "20g",
+    fibers: "4g",
+    omega3: "Élevé",
+    ingredients: ["200g fromage blanc 0%", "10g graines de lin moulues", "Un trait de stévia ou vanille liquide"],
+    steps: [
+      "Verse le fromage blanc 0% dans un ramequin.",
+      "Mouds les graines de lin au dernier moment pour préserver la qualité des oméga-3.",
+      "Incorpore les graines et un trait d'arôme vanille ou stévia, puis mélange bien."
     ]
   }
 ];
@@ -270,7 +428,6 @@ function setupNotifications() {
 }
 
 function scheduleLocalNotifications() {
-  // Exemple de notification de démonstration envoyée après 5 secondes
   setTimeout(() => {
     if (Notification.permission === "granted") {
       new Notification("DevFit - Pause Active 50/5 !", {

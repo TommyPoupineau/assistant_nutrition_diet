@@ -6,13 +6,13 @@
   <title>DevFit - Santé & Nutrition</title>
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" href="#10b981">
+  <meta name="theme-color" content="#10b981">
 </head>
 <body>
 
   <!-- HEADER / APPLI TITLE -->
   <header class="app-header">
-    <h1>DevFit <span>v2</span></h1>
+    <h1>DevFit <span>v3</span></h1>
     <p>Programme Sédentaire / Développeur</p>
   </header>
 
@@ -21,6 +21,42 @@
 
     <!-- ONGLET 1 : TIMELINE QUOTIDIENNE -->
     <section id="tab-timeline" class="tab-pane active">
+      
+      <!-- WIDGET HYDRATATION -->
+      <div class="dashboard-widget">
+        <div class="widget-header">
+          <h3>💧 Suivi d'Hydratation</h3>
+          <span id="water-count-text">0 / 2.0 L</span>
+        </div>
+        <div class="water-grid" id="water-glasses-container">
+          <!-- Les verres d'eau seront générés en JS -->
+        </div>
+      </div>
+
+      <!-- WIDGET SUIVI PROTÉINES -->
+      <div class="dashboard-widget">
+        <div class="widget-header">
+          <h3>🥩 Suivi Protéines du Jour</h3>
+          <span id="protein-count-text">0 / 140g</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="protein-progress-bar" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- WIDGET TIMER POMODORO ACTIVE BREAK -->
+      <div class="dashboard-widget">
+        <div class="widget-header">
+          <h3>⏱️ Timer Travail / Pause Active</h3>
+          <span id="pomodoro-status" class="status-badge status-work">Session Dev (50m)</span>
+        </div>
+        <div class="timer-display" id="timer-display">50:00</div>
+        <div class="timer-controls">
+          <button id="btn-timer-toggle" class="btn-primary">Démarrer</button>
+          <button id="btn-timer-reset" class="btn-secondary">Réinitialiser</button>
+        </div>
+      </div>
+
       <h2>Planning de la Journée</h2>
       <div id="daily-timeline" class="timeline-container">
         <!-- Généré dynamiquement en JS -->
@@ -31,7 +67,7 @@
     <!-- ONGLET 2 : RECETTES -->
     <section id="tab-recipes" class="tab-pane">
       <h2>Recettes Anti-Inflammatoires</h2>
-      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Coche les recettes que tu veux cuisiner pour générer ta liste de courses.</p>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Coche les recettes que tu veux cuisiner pour générer ta liste de courses avec quantités accumulées.</p>
       
       <!-- FILTRES DES RECETTES -->
       <div class="recipes-filter">
@@ -49,7 +85,7 @@
 
     <!-- ONGLET 3 : LISTE DE COURSES -->
     <section id="tab-groceries" class="tab-pane">
-      <h2>Liste de Courses</h2>
+      <h2>Liste de Courses Dynamique</h2>
       <div id="groceries-container">
         <!-- Généré dynamiquement selon les recettes cochées -->
       </div>
